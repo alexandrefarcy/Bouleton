@@ -44,6 +44,6 @@ public class CameraController : MonoBehaviour
         Vector3 targetPoint = _Target.position;
 
         float step = _OrbitalRotationSpeed * Time.fixedDeltaTime;
-        _SelfTransform.RotateAround(targetPoint, Vector3.up, step);
+        _SelfTransform.RotateAround(targetPoint, axisRotation, step);
     }
 }
