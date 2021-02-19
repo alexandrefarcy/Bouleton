@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody _Rb;
     [SerializeField] private float _Speed = 5f;
+    [SerializeField] private float _CurrentSpeed;
 
     void Awake()
     {
@@ -16,6 +17,7 @@ public class PlayerController : MonoBehaviour
     private void Initialisation()
     {
         _Rb = GetComponent<Rigidbody>();
+        _CurrentSpeed = _Speed;
     }
 
     void FixedUpdate()
@@ -25,6 +27,26 @@ public class PlayerController : MonoBehaviour
 
         Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
 
-        _Rb.AddForce(movement * _Speed);
+        _Rb.AddForce(movement * _CurrentSpeed);
+    }
+
+    //RETURN
+    public float GetCurrentSpeed()
+    {
+        return _CurrentSpeed;
+    }
+    public float GetInitSpeed()
+    {
+        return _Speed;
+    }
+
+    //SET
+    public void SetNewSpeed(float newSpeed)
+    {
+        _CurrentSpeed = newSpeed;
+    }
+    public void ResetSpeed()
+    {
+        _CurrentSpeed = _Speed;
     }
 }
