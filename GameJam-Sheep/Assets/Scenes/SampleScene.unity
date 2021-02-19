@@ -501,6 +501,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _Target: {fileID: 2099545663}
   _Interpolation: 0.7
+  _OrbitalRotationSpeed: 5
 --- !u!20 &963194227
 Camera:
   m_ObjectHideFlags: 0
@@ -952,6 +953,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 728195295}
     m_Modifications:
+    - target: {fileID: 2587806412993213185, guid: 995f74c18234482438326e42592e1d6e,
+        type: 3}
+      propertyPath: _GrowSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2587806412993213185, guid: 995f74c18234482438326e42592e1d6e,
+        type: 3}
+      propertyPath: _GrowFactor
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 2587806412993213186, guid: 995f74c18234482438326e42592e1d6e,
         type: 3}
       propertyPath: m_RootOrder
