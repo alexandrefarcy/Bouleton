@@ -10,6 +10,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _Speed = 5f;
     [SerializeField] private float _CurrentSpeed;
 
+    private bool boost;
+
     void Awake()
     {
         Initialisation();
@@ -26,10 +28,9 @@ public class PlayerController : MonoBehaviour
         float moveVertical = Input.GetAxis("Vertical");
 
         Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
-
-        _Rb.AddForce(movement * _CurrentSpeed);
+        _Rb.AddForce(movement * _CurrentSpeed);       
     }
-
+    #region GET
     //RETURN
     public float GetCurrentSpeed()
     {
@@ -39,7 +40,9 @@ public class PlayerController : MonoBehaviour
     {
         return _Speed;
     }
+    #endregion
 
+    #region SET
     //SET
     public void SetNewSpeed(float newSpeed)
     {
@@ -49,4 +52,28 @@ public class PlayerController : MonoBehaviour
     {
         _CurrentSpeed = _Speed;
     }
+    #endregion
+
+    #region SpeedBoost
+    public void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.tag == "speedBoost")
+        {
+            _CurrentSpeed = 25;
+        }
+    }
+    #endregion
+
+    #region Default Speed
+    public void OnTriggerExit(Collider other)
+    {
+        if(other.gameObject.tag =="speedBoost")
+        {
+            _CurrentSpeed = _Speed;
+        }
+    }
+
+    #endregion
+
+
 }
