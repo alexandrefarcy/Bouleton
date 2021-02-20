@@ -499,7 +499,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15f2f40829441ad45a84a933cbe23687, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _Target: {fileID: 2099545663}
+  _Target: {fileID: 1182635493}
   _Interpolation: 0.7
   _OrbitalRotationSpeed: 5
 --- !u!20 &963194227
@@ -940,12 +940,6 @@ Transform:
   m_Father: {fileID: 1229263660}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &2099545663 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2587806413676421336, guid: 995f74c18234482438326e42592e1d6e,
-    type: 3}
-  m_PrefabInstance: {fileID: 2587806412013676263}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2587806412013676263
 PrefabInstance:
   m_ObjectHideFlags: 0

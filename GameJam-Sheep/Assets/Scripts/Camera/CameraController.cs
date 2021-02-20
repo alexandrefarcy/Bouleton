@@ -13,7 +13,6 @@ public class CameraController : MonoBehaviour
     private Vector3 _Offset;
     [SerializeField] private float _Interpolation = 0.7f;
 
-    private Vector3 _PreviousPosition;
     [SerializeField] private float _OrbitalRotationSpeed = 5f;
 
     void Awake()
@@ -27,11 +26,15 @@ public class CameraController : MonoBehaviour
         _Offset = _SelfTransform.position - _Target.position;
     }
 
-    void FixedUpdate()
+    void Update()
     {
-        OrbitalRotation();
         FollowTarget();
     }
+    void LateUpdate()
+    {
+        OrbitalRotation();
+    }
+
     private void FollowTarget()
     {
         _SelfTransform.position = Vector3.Lerp(_SelfTransform.position,
@@ -40,20 +43,6 @@ public class CameraController : MonoBehaviour
     }
     private void OrbitalRotation()
     {
-        _SelfTransform.LookAt(_Target);
-
-        if (Input.GetMouseButtonDown(0))
-        {
-            _PreviousPosition = _Cam.ScreenToViewportPoint(Input.mousePosition);
-        }
-
-        if (Input.GetMouseButton(0))
-        {
-            Vector3 direction = _PreviousPosition - _Cam.ScreenToViewportPoint(Input.mousePosition);
-
-            _SelfTransform.RotateAround(_Target.position, direction, _OrbitalRotationSpeed);
-
-            _PreviousPosition = _Cam.ScreenToViewportPoint(Input.mousePosition);
-        }
+        _SelfTransform.RotateAround(_Target.position, Vector3.up, _OrbitalRotationSpeed * Time.deltaTime);
     }
 }
